@@ -1,0 +1,58 @@
+
+.jumbotron {
+  background-color: #f4511e; /* Orange */
+  color: #ffffff;
+  }
+  body {
+  margin: 0;
+  background-color:#999999;
+}
+.bg-image {
+  /* The image used */
+height: 100%;
+  
+}
+ .button-container-div {
+            text-align: right;
+        }
+.ex{
+  color: #ff0000;
+}
+.bk{
+  background-image: url("paper.gif");
+  background-color: #cccccc;
+}
+input[type=number] {
+   width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid green;
+  border-radius: 4px;
+}
+label {
+  color: #000000;
+  font-weight: bold;
+  display: block;
+}
+.new{
+width: 80%;
+ padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid green;
+  border-radius: 4px;
+}
+input[type=text] {
+   width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid red;
+  border-radius: 4px;
+p {
+  text-indent: 50px;
+  text-align: justify;
+  letter-spacing: 3px;
+}
+}

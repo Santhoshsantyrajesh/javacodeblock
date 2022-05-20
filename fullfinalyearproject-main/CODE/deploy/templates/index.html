@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><div class="ex">PREDICTION OF COVID-19</div> </a>
+    </div>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+    <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+    <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+    <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <div class="jumbotron text-center">
+  <h1>Welcome to CovidTest</h1> 
+  <p>Wear Mask Be Safe</p> 
+<div class="button-container-div">
+<button type="button" class="btn btn-primary btn-rounded" id="btnNext">Click Here to take test-></button></div>
+</div>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+       <div>
+	
+<h1 style="text-align:center">PREDICTION OF COVID-19 </h1>
+	
+	</div>  
+ 
+         <label class="white" for="">Name </label>
+         <input type="text" class="space form-control" step="0.01" name="NAME" placeholder="NAME" id="userName" required="required" /><br>
+
+<div class="back">
+     <!-- Main Input For Receiving Query to our ML -->
+    <form class="form-group" action="{{ url_for('predict')}}"method="post">
+                
+		<div class="row">
+		<div class="gap col-md-6 ">
+
+		<label class="white" for="">COUGH</label>
+		<input type="number" class="space form-control" step="0.01" name="COUGH" placeholder="COUGH" required="required" /><br>
+
+		<label class="white"  for="">FEVER</label>
+		<input type="number" class="space form-control" step="0.01" name="FEVER" placeholder="FEVER" required="required" /><br>
+
+		<label class="white"  for="">SORE_THROAT</label>
+		<input type="number" class="space form-control" step="0.01" name="SORE_THROAT" placeholder="SORE_THROAT" required="required" /><br>
+
+		<label class="white"  for="">SHORTNESS OF BREATH</label>
+		<input type="number" class="space form-control" step="0.01" name="SHORTNESS OF BREATH" placeholder="SHORTNESS OF BREATH" required="required" /><br>
+		</div>
+
+<div class="gap col-md-6">
+		<label class="white"  for="">HEAD ACHE</label>
+		<input type="number" class="space form-control" step="0.01" name="HEAD ACHE" placeholder="HEAD ACHE" required="required" /><br>
+
+		<label class="white"  for="">AGE 60 AND ABOVE</label>
+		<select class="nspace form-control" name="AGE 60 AND ABOVE" id="AGE 60 AND ABOVE">
+ 			 <option value=0>0-10</option>
+  			 <option value=0>10-20</option>
+                         <option value=0>20-30</option>
+  			 <option value=0>30-40</option>
+                         <option value=1>40-50</option>
+  			 <option value=1>50-60</option>
+                         <option value=1>>60</option>
+		</select><br/>
+		
+		<label class="white"  for="">GENDER</label>
+		<select class="nspace form-control" name="GENDER" id="GENDER">
+  			<option value=1>MALE</option>
+  			<option value=0>FEMALE</option>
+                        <option value=0>TRANSGENDER</option>
+		</select><br/>
+
+		<label class="white"  for="">TEST-INDICATION</label>
+		<select class="nspace form-control" name="TEST-INDICATION" id="TEST-INDICATION">
+  			<option value=0>ABROAD</option>
+  			<option value=1>CONTACT WITH CONFIRMED</option>
+  			<option value=2>OTHER</option>
+		</select><br/>
+
+               
+                 
+
+</div>
+</div>
+
+  <div class="container-fluid col-sm my-2 align-items-center" style="padding: 5% 0;" ><strong style="color:red;">IF YOU HAVE SYMPTOMS,ENTER 1 OR ENTER 0</strong></div>
+
+<div style="padding:2% 35%">
+  <button type="submit" class="btn btn-success btn-block" style="width:350px;padding:20px">Predict</button>		
+</div>
+      
+    </form>
+</div>
+   <br>
+   <br>
+
+<div  style="background:skyblue;padding:2% 40%">
+   {{ prediction_text }}
+</div>
+ </div>
+
+    <div id="menu2" class="tab-pane fade" onload="myFunction()">
+      <h3>Menu 2</h3>
+      <h4 id="user"></h4>
+     
+     <div  style="background:skyblue;padding:2% 40%">
+   {{ prediction_text }}
+     </div>
+
+      <div class="row">
+
+      <div class="col-sm-6">
+      <button type="button" class="btn btn-primary btn-rounded" id="btnPrevious">Previous Page</button>
+      </div>
+
+      <div class="col-sm-6">
+      <button class="float-end" type="button" class="btn btn-primary btn-rounded" id="btnNext">Next Page</button>
+      </div>
+
+      </div>
+      </div>
+   
+
+
+
+    <div id="menu3" class="tab-pane fade">
+      <h3>Menu 3</h3>
+      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </div>
+  
+
+
+
+<script>
+  $('#btnNext').click(function(){
+  $('.nav-tabs > .active').next('li').find('a').trigger('click');
+});
+
+  $('#btnPrevious').click(function(){
+  $('.nav-tabs > .active').prev('li').find('a').trigger('click');
+});
+</script>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("userName").value;
+  document.getElementById("user").innerHTML = x;
+}
+</script>
+</body>
+</html>
+
+
